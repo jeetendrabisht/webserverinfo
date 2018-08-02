@@ -3,6 +3,7 @@ const hbs = require("hbs");
 const fs = require("fs");
 
 const app = express();
+const port = process.env.PORT || 3000;
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/helperpartials");
 
@@ -42,8 +43,10 @@ app.get("/help", (req, res) => {
   res.render("help.hbs");
 });
 
-app.listen(3000, error => {
+app.listen(port, error => {
   if (error) {
     console.log("Error : ", error);
+  } else {
+	console.log("Server running at : ", port);
   }
 });
